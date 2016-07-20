@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/master.css" charset="utf-8">
+  </head>
+  <body>
+    <div class="ciomos">
+      <div class="prim">
+      <button type="button" name="C" id="bc" onclick="cl(this)">C</button>
+      <form class="" action="index.html" method="post">
+        <input type="text" name="text" value="" id="btext"/>
+      </form>
+      </div>
+      <div class="secund">
+      <button class="b" type="button" id="b7" onclick="cifra(this)">7</button>
+      <button class="b" type="button" id="b8" onclick="cifra(this)">8</button>
+      <button class="b" type="button" id="b9" onclick="cifra(this)">9</button>
+      <button class="b" type="button" id="bplus" onclick="sum(this)">+</button>
+      <button class="b" type="button" id="b4" onclick="cifra(this)">4</button>
+      <button class="b" type="button" id="b5" onclick="cifra(this)">5</button>
+      <button class="b" type="button" id="b6" onclick="cifra(this)">6</button>
+      <button class="b" type="button" id="bminus" onclick="minus(this)">-</button>
+      <button class="b" type="button" id="b1" onclick="cifra(this)">1</button>
+      <button class="b" type="button" id="b2" onclick="cifra(this)">2</button>
+      <button class="b" type="button" id="b3" onclick="cifra(this)">3</button>
+      <button class="b" type="button" id="bdiv" onclick="divide(this)">%</button>
+      <button class="b" type="button" id="b0" onclick="cifra(this)">0</button>
+      <button class="b" type="button" id="bdot" onclick="dot(this)">.</button>
+      <button class="b" type="button" id="beq" onclick="eq(this)">=</button>
+      <button class="b" type="button" id="bmul" onclick="mul(this)">x</button>
+      </div>
+    </div>
+
+<p id="avizier">
+
+</p>
+
+<script type="text/javascript">
+
+var aviz = document.getElementById("avizier");
+var afisaj = document.getElementById("btext");
+var thenum; var oldnum; var cazul; var rez; var t = 0; var tt = 0;
+
+  function cifra(el) {                   // la apasarea unei cifre { 0 1 2 3 4 5 6 7 8 9}
+    afisaj.value += el.innerHTML;         // pe ecran (textbox) va afisa textul din butoane ( adica numerele butoanelor)
+    thenum = parseFloat(afisaj.value);    // variabla "thenum" va stoca numarul transformat din string al textului
+    t++;                         // var t = timpul;
+    aviz.innerHTML += el.innerHTML;    // aviz-ul va avisa in avizier ( paragraful de sub calculator = avizier)
+  }
+
+  function sum(el) {            // functia va fi apelata la apasarea tastei "+"
+    afisaj.value = "";          // ecranul nu ma afisa nimica
+    oldnum = thenum;           // in variabila oldnum se va stoca valoarea tastei apasate ( thenum )
+    cazul = 1;                  // apelarea functiei sum() vom considera cazul 1
+    aviz.innerHTML += " " + "+" + " ";  // avizier
+
+  }
+
+  function minus(el){            // daca timpul e 0, adica nu a fost apasat niciun buton,
+    if (t==0){                        // atunci semnul minus si numerele alese de noi se vor tranforma din text in float
+      afisaj.value = "-";
+      thenum = parseFloat(afisaj.value);
+      aviz.innerHTML = "-";
+    }
+    else {
+      afisaj.value = "-";       // textl v-a afisa semnul " - " ( minus )
+      oldnum = thenum;           // in variabila oldnum se va stoca valoarea tastei apasate ( thenum )
+      aviz.innerHTML += " " + "-" + " ";  //  avizier
+      cazul = 2;                // apelarea functiei minus() cand t!=0  vom considera cazul 2
+    }
+  }
+
+  function divide(el){
+    afisaj.value = "";
+    oldnum = thenum;              // in variabila oldnum se va stoca valoarea tastei apasate ( thenum )
+    cazul = 3;                     // apelarea functiei divide() vom considera cazul 3
+    aviz.innerHTML += " " + "/" + " ";   // avizier
+  }
+
+  function mul(el){
+    afisaj.value = "";
+    oldnum = thenum;             // in variabila oldnum se va stoca valoarea tastei apasate ( thenum )
+    cazul = 4;                    // apelarea functiei mul() vom considera cazul 4
+    aviz.innerHTML += " " + "*" + " ";   // avizier
+  }
+
+  function dot(el){
+    afisaj.value += ".";    // pune semnul "punct" dupa strngul introdus de noi ( adica numere in cazu nostru ) si il tranformam in float
+    thenum = parseFloat(afisaj.value);           // pentru ca limbajul sa-l considere numar ca sa putem face calcule cu el
+    aviz.innerHTML += ".";   // avizier
+  }
+
+  function eq(el) {
+    if (cazul==1){
+      rez = oldnum + thenum;      // apelarea cazului 1 adica adunare ( functia sum() )
+    }
+    if (cazul==2){
+      rez = oldnum + thenum;      // apelarea cazului 2 adica adunare ( functia minus() )
+    }
+    if (cazul==3){
+      rez = oldnum / thenum;      // apelarea cazului 3 adica adunare ( functia divide() )
+    }
+    if (cazul==4){
+      rez = oldnum * thenum;      // apelarea cazului 4 adica adunare ( functia mul() )
+    }
+    afisaj.value = rez;           // se va afisa rezultatul in textbox ( ecran )
+    aviz.innerHTML += " " + "=" + " " + rez;   // avizier
+    thenum = rez;                  // variavbila thenum va lua valoarea rezultatului pt a putea continua calculele
+  }
+
+  function cl(el) {     // functia e apelata la apasarea butonului C a tastaturii
+    thenum = "";      // thenum va fi nul
+    oldnum = "";      // oldnum va fi nul
+    afisaj.value = "";   // ecranul se va goli
+    aviz.innerHTML = "";   // avizierul se va goli
+  }
+
+</script>
+  </body>
+</html>

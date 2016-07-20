@@ -1,0 +1,32 @@
+.ciomos {
+  background-color: #53B3DF;
+  width: 350px;
+  height: 300px;
+  padding-left: 20px;
+  padding-top: 30px;
+}
+
+.secund {
+  margin-top: 33px;
+}
+
+button {
+  width: 68px;
+  height: 40px;
+  margin: 5px 5px 5px 5px;
+}
+
+#btext {
+  margin-left: 10px;
+  margin-top: 5px;
+  height: 33px;
+  width: 227px;
+}
+
+#bc {
+  float: left;
+}
+
+#text {
+  float: right;
+}
