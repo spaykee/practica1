@@ -1,4 +1,17 @@
+
+.monster2 {
+  background-image: url(http://data.whicdn.com/images/72152445/original.gif);
+}
+
+.monster {
+  background-color: white;
+}
+
+
+
+
 .ciomos {
+  position: absolute;
   background-color: #53B3DF;
   width: 350px;
   height: 300px;
@@ -30,3 +43,5 @@ button {
 #text {
   float: right;
 }
+
+#
